@@ -250,11 +250,11 @@ if ! var_p1_ratio.between?(10, 80)
   exit
 end
 
-if var_asm_disk_num.to_i < 4
+if var_asm_disk_num.to_i < 2
   puts 'ERROR: asm_disk_num option can not be less then 4'
   exit
 end
-if var_asm_disk_size.to_i < 10
+if var_asm_disk_size.to_i < 5
   puts 'ERROR: asm_disk_size option can not be less then 10 Gb'
   exit
 end
@@ -437,7 +437,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           disk_num = 0
           while disk_num < box_disks_num do
             libvirt.storage :file,
-              :size => '100G'      # defaults to 10G if unspecified!
+              :size => '20G'      # defaults to 10G if unspecified!
             disk_num += 1
           end
 
@@ -475,7 +475,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         disk_num = 0
         while disk_num < box_disks_num do
           libvirt.storage :file,
-            :size => '100G'      # defaults to 10G if unspecified!
+            :size => '20G'      # defaults to 10G if unspecified!
           disk_num += 1
         end
 

@@ -4,6 +4,10 @@
   -initParams db_recovery_file_dest_size=2G \
   -responseFile NO_VALUE \
   -gdbname DB193H1 \
+  -createAsContainerDatabase true \
+  -numberOfPDBs 1 \
+  -pdbName pdb1 \
+  -pdbAdminPassword welcome1 \
   -characterSet AL32UTF8 \
   -sysPassword welcome1 \
   -systemPassword welcome1 \

@@ -367,7 +367,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             #:path => '',       # automatically chosen if unspecified!
             #:device => 'vdb',  # automatically chosen if unspecified!
             #:type => 'qcow2'   # defaults to 'qcow2' if unspecified!
-            :size => '100G'      # defaults to 10G if unspecified!
+            :size => '10G'      # defaults to 10G if unspecified!
           disk_num += 1
         end
 
@@ -382,7 +382,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               #:device => 'vdb',            # automatically chosen if unspecified!
               :size => oradata_disk_size,  # defaults to 10G if unspecified!
               :cache => 'none',
-              :type => 'raw'                # defaults to 'qcow2' if unspecified!
+              :type => 'qcow2'                # defaults to 'qcow2' if unspecified! >>> Changed from raw to qcow2 to get thin provisioning
           disk_num += 1
           num += 1
         end
@@ -407,7 +407,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             #:path => '',       # automatically chosen if unspecified!
             #:device => 'vdb',  # automatically chosen if unspecified!
             #:type => 'qcow2'   # defaults to 'qcow2' if unspecified!
-            :size => '100G'      # defaults to 10G if unspecified!
+            :size => '10G'      # defaults to 10G if unspecified!
           disk_num += 1
         end
 
@@ -422,7 +422,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             #:device => 'vdb',            # automatically chosen if unspecified!
             :size => oradata_disk_size,   # defaults to 10G if unspecified!
             :cache => 'none',
-            :type => 'raw'                # defaults to 'qcow2' if unspecified!
+            :type => 'qcow2'                # defaults to 'qcow2' if unspecified! >>> Changed from raw to qcow2 to get thin provisioning
           disk_num += 1
           num += 1
         end
