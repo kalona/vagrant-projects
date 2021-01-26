@@ -103,6 +103,7 @@ var_vm2_private_ip  = params['host2']['private_ip']
 #
 var_oradata_disk_num   = params['env']['oradata_disk_num']
 var_oradata_disk_size  = params['env']['oradata_disk_size']
+var_oradata_disk_path  = params['env']['oradata_disk_path']
 #
 var_db_software     = params['env']['db_software']
 var_ora_languages   = params['env']['ora_languages']
@@ -269,7 +270,7 @@ if (var_cdb == true)
   end
 end
 
-path = "./ORCL_software/" + var_db_software
+path = "../" + var_db_software
 if ! File.exist?(path)
   puts "ERROR: db_software does not exist"
   exit
@@ -430,6 +431,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+
+  var_vm1_u01_disk = var_oradata_disk_path + var_prefix_name + "/" + var_prefix_name + "-" + var_vm1_name + "/" + var_vm1_u01_disk
+
+
   if var_provider_name == 'virtualbox'
     # vm host1
     config.vm.define :host1 do |host1|
@@ -459,7 +464,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         disk_num = disk_num.to_i + 1
         num = 0
         while num < var_oradata_disk_num do
-          oradata_disk = var_oradata_disk_path + "primary_oradata_disk" + num.to_s + ".vdi"
+          oradata_disk = var_oradata_disk_path + var_prefix_name + "/" + var_prefix_name + "-" + var_vm1_name + "/" "primary_oradata_disk" + num.to_s + ".vdi"
           # Making oradata disks
           unless File.exist?(oradata_disk)
             vb.customize ['createhd', '--filename', oradata_disk, '--size', var_oradata_disk_size * 1024, '--format', 'VDI']
@@ -470,6 +475,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
       end
     end
+
+    var_vm2_u01_disk = var_oradata_disk_path + var_prefix_name + "/" + var_prefix_name + "-" + var_vm2_name + "/" + var_vm2_u01_disk
+
 
     # vm host2
     config.vm.define :host2 do |host2|
@@ -499,7 +507,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         disk_num = disk_num.to_i + 1
         num = 0
         while num < var_oradata_disk_num do
-          oradata_disk = var_oradata_disk_path + "standby_oradata_disk" + num.to_s + ".vdi"
+          oradata_disk = var_oradata_disk_path + var_prefix_name + "/" + var_prefix_name + "-" + var_vm2_name + "/" + "standby_oradata_disk" + num.to_s + ".vdi"
           # Making oradata disks
           unless File.exist?(oradata_disk)
             vb.customize ['createhd', '--filename', oradata_disk, '--size', var_oradata_disk_size * 1024, '--format', 'VDI']
