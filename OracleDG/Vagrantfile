@@ -270,11 +270,11 @@ if (var_cdb == true)
   end
 end
 
-path = "../" + var_db_software
-if ! File.exist?(path)
-  puts "ERROR: db_software does not exist"
-  exit
-end
+# path = "../" + var_db_software
+# if ! File.exist?(path)
+#   puts "ERROR: db_software does not exist"
+#   exit
+# end
 
 if var_oradata_disk_num.to_i < 2
   puts 'ERROR: oradata_disk_num option can not be less then 2'

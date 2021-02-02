@@ -339,12 +339,12 @@ if (var_cdb == true)
   end
 end
 
-path = "../" + var_gi_software
+path = "./ORCL_software/" + var_gi_software
 if ! File.exist?(path)
   puts "ERROR: gi_software does not exist"
   exit
 end
-path = "../" + var_db_software
+path = "./ORCL_software/" + var_db_software
 if ! File.exist?(path)
   puts "ERROR: db_software does not exist"
   exit
@@ -499,6 +499,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  var_vm2_u01_disk = var_asm_disk_path + var_prefix_name + "/" + var_prefix_name + "-" + var_vm2_name + "/" + var_vm2_u01_disk
+  
   if var_provider_name == 'virtualbox'
     if var_orestart == false
       # vm node2
@@ -529,7 +531,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           disk_num = disk_num.to_i + 1
           num = 0
           while num < var_asm_disk_num do
-            asm_disk = var_asm_disk_path + "asm_disk" + num.to_s + ".vdi"
+            asm_disk = var_asm_disk_path + var_prefix_name + "/" + "asm_disk" + num.to_s + ".vdi"
             # Making oradata disks
             unless File.exist?(asm_disk)
               vb.customize ['createhd', '--filename', asm_disk, '--size', var_asm_disk_size * 1024, '--format', 'VDI', '--variant', 'Fixed']
@@ -542,6 +544,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
       end
     end
+
+    var_vm1_u01_disk = var_asm_disk_path + var_prefix_name + "/" + var_prefix_name + "-" + var_vm1_name + "/" + var_vm1_u01_disk
 
     # vm node1
     config.vm.define :node1 do |node1|
@@ -571,7 +575,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         if var_orestart == false
           num = 0
           while num < var_asm_disk_num do
-            asm_disk = var_asm_disk_path + "asm_disk" + num.to_s + ".vdi"
+            asm_disk = var_asm_disk_path + var_prefix_name + "/" + "asm_disk" + num.to_s + ".vdi"
             vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', disk_num, '--device', 0, '--type', 'hdd', '--medium', asm_disk, '--mtype', 'shareable', '--nonrotational', var_non_rotational]
             disk_num += 1
             num += 1
@@ -580,7 +584,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           # Making asm disks
           num = 0
           while num < var_asm_disk_num do
-            asm_disk = var_asm_disk_path + "asm_disk" + num.to_s + ".vdi"
+            asm_disk = var_asm_disk_path + var_prefix_name + "/" + "asm_disk" + num.to_s + ".vdi"
             # Making oradata disks
             unless File.exist?(asm_disk)
               vb.customize ['createhd', '--filename', asm_disk, '--size', var_asm_disk_size * 1024, '--format', 'VDI', '--variant', 'Fixed']

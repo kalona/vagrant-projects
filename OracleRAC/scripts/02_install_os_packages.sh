@@ -28,6 +28,7 @@
 echo "-----------------------------------------------------------------"
 echo -e "${INFO}`date +%F' '%T`: Install base packages"
 echo "-----------------------------------------------------------------"
+yum upgrade -y
 yum install -y deltarpm expect tree unzip zip 
 yum install -y oracle-database-preinstall-18c
 yum install -y oracleasm-support

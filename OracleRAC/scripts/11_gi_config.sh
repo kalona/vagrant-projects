@@ -9,9 +9,9 @@
     oracle.install.asm.OSOPER=asmoper \
     oracle.install.asm.OSASM=asmadmin \
     oracle.install.crs.config.scanType=LOCAL_SCAN \
-    oracle.install.crs.config.gpnp.scanName=vgt-ol7-rac-scan \
+    oracle.install.crs.config.gpnp.scanName=vgtol7-rac-scan \
     oracle.install.crs.config.gpnp.scanPort=1521 \
-    oracle.install.crs.config.clusterName=vgt-ol7-rac-c \
+    oracle.install.crs.config.clusterName=vgtol7-rac-c \
     oracle.install.crs.config.ClusterConfiguration=STANDALONE \
     oracle.install.crs.config.configureAsExtendedCluster=false \
     oracle_install_crs_ConfigureMgmtDB=false \

@@ -9,14 +9,14 @@
     oracle.install.asm.OSOPER=asmoper \
     oracle.install.asm.OSASM=asmadmin \
     oracle.install.crs.config.scanType=LOCAL_SCAN \
-    oracle.install.crs.config.gpnp.scanName=vgt-ol7-rac-scan \
+    oracle.install.crs.config.gpnp.scanName=vgtol7-rac-scan \
     oracle.install.crs.config.gpnp.scanPort=1521 \
     oracle.install.crs.config.ClusterConfiguration=STANDALONE \
     oracle.install.crs.config.configureAsExtendedCluster=false \
-    oracle.install.crs.config.clusterName=vgt-ol7-rac-c \
+    oracle.install.crs.config.clusterName=vgtol7-rac-c \
     oracle_install_crs_ConfigureMgmtDB=false \
     oracle.install.crs.config.clusterNodes=node1.localdomain:node1-vip.localdomain:HUB,node2.localdomain:node2-vip.localdomain:HUB \
-    oracle.install.crs.config.networkInterfaceList=eth1:192.168.125.0:1,eth2:192.168.200.0:5 \
+    oracle.install.crs.config.networkInterfaceList=eth1:192.168.56.0:1,eth2:192.168.200.0:5 \
     oracle.install.crs.config.gpnp.configureGNS=false \
     oracle.install.crs.config.autoConfigureClusterNodeVIP=false \
     oracle.install.asm.configureGIMRDataDG=false \
@@ -38,4 +38,4 @@
     oracle.install.config.omsPort=0 \
     oracle.install.crs.rootconfig.executeRootScript=false
     oracle.install.crs.config.clusterNodes=node1.localdomain:node1-vip.localdomain:HUB,node2.localdomain:node2-vip.localdomain:HUB \
-    oracle.install.crs.config.networkInterfaceList=eth1:192.168.125.0:1,eth2:192.168.200.0:5 \
+    oracle.install.crs.config.networkInterfaceList=eth1:192.168.56.0:1,eth2:192.168.200.0:5 \

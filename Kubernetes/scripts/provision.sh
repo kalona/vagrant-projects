@@ -116,11 +116,11 @@ sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
 modprobe br_netfilter
 echo "br_netfilter" > /etc/modules-load.d/br_netfilter.conf
 # IP VS
-for Module in nf_conntrack_ipv4 ip_vs ip_vs_rr ip_vs_wrr ip_vs_sh
+for Module in nf_conntrack ip_vs ip_vs_rr ip_vs_wrr ip_vs_sh  # >>> nf_conntrack_ipv4 renamed to nf_conntrack
 do
   modprobe $Module
 done
-echo -e "ip_vs_wrr\nip_vs_sh\nnf_conntrack_ipv4\nip_vs\nip_vs_rr" > /etc/modules-load.d/ip_vs.conf
+echo -e "ip_vs_wrr\nip_vs_sh\nnf_conntrack\nip_vs\nip_vs_rr" > /etc/modules-load.d/ip_vs.conf
 # Disable swap
 swapoff -a
 sysctl -p /etc/sysctl.d/k8s.conf
